@@ -10,8 +10,8 @@ export const getRandomPokemon: (notThisOne?: number) => number = (
 };
 
 export const getOptionsForVote = () => {
-  const firsId = getRandomPokemon();
-  const secondId = getRandomPokemon(firsId);
+  const firstId = getRandomPokemon();
+  const secondId = getRandomPokemon(firstId);
 
-  return [firsId, secondId];
+  return [firstId, secondId];
 };
