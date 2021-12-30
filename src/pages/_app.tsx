@@ -10,12 +10,17 @@ import { withTRPC } from '@trpc/next';
 import { AppType } from 'next/dist/shared/lib/utils';
 import type { AppRouter } from '@/backend/router';
 
+
+function getBaseUrl() {
+  if (process.browser) return "";
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+
+  return `https://localhost:${process.env.PORT ?? 3000}`;
+}
 export default withTRPC<AppRouter>({
   config({ ctx }) {
 
-    const url = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}/api/trpc`
-      : 'http://localhost:3000/api/trpc';
+    const url = `${getBaseUrl()}/api/trpc`;
 
     return {
       url,
