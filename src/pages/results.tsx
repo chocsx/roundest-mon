@@ -71,7 +71,6 @@ export default ResultsPage;
 
 export const getStaticProps: GetServerSideProps = async () => {
   const pokemonOrdered = await getPokemonInOrder();
-  console.log("did I find pokemon", pokemonOrdered);
 
   return { props: { pokemon: pokemonOrdered }, revalidate: 60 };
 };
