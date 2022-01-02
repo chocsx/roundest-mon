@@ -22,16 +22,16 @@ export default function Home() {
 
   const voteForRoundest = (selected: number) => {
     if (selected === first) {
-      voteMutation.mutate({ votedFor: first, votedAgainst: second })
+      voteMutation.mutate({ votedFor: first, votedAgainst: second });
     } else {
-      voteMutation.mutate({ votedFor: second, votedAgainst: first })
+      voteMutation.mutate({ votedFor: second, votedAgainst: first });
     }
-    
+
     updateIds(getOptionsForVote());
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col justify-center items-center">
+    <div className="h-screen w-screen flex flex-col justify-center items-center relative">
       <div className="text-2xl text-center">Which pokemon is rounder?</div>
       <div className="p-2" />
       <div className="border rounded p-8 flex justify-between items-center max-w-2xl">
@@ -51,8 +51,11 @@ export default function Home() {
               />
             </>
           )}
-        <div className="p-2"></div>
+        <div className="p-2"/>
       </div>
+      <div className="absolute bottom-0 w-full text-xl text-center pb-2">
+          <a href="https://github.com/chocsx/roundest-mon">github</a>
+        </div>  
     </div>
   );
 }
@@ -67,7 +70,9 @@ const PokemonListing: React.FC<{
     <div className="flex flex-col items-center">
       <Image
         src={props.pokemon.sprites.front_default}
-        className="w-64 h-64"
+        width={256}
+        height={256}
+        layout="fixed"
         alt="Pokemon"
       />
       <div className="text-xl text-center capitalize mt-[-2rem]">
