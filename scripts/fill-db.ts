@@ -1,8 +1,8 @@
 import { PokemonClient } from "pokenode-ts";
 
-import { prisma } from "@/backend/utils/prisma";
+import { prisma } from "../src/backend/utils/prisma";
 
-const doBackFill = async () => {
+const doBackfill = async () => {
   const pokeApi = new PokemonClient();
 
   const allPokemon = await pokeApi.listPokemons(0, 493);
@@ -19,7 +19,7 @@ const doBackFill = async () => {
     data: formattedPokemon,
   });
 
-  console.log("creation?", creation);
+  console.log("Creation?", creation);
 };
 
-doBackFill();
+doBackfill();

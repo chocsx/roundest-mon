@@ -10,7 +10,8 @@ export const appRouter = trpc
       const pokemon = await prisma.pokemon.findFirst({
         where: { id: input.id },
       });
-      console.log(pokemon)
+
+      if (!pokemon) throw new Error("lol doesnt exists");
 
       return pokemon;
     },
